@@ -48,7 +48,7 @@ export default function Home() {
             <h3>{merchant.name}</h3>
             <ul>
               {merchant.products.map((product) => (
-                <li>{product.name}</li>
+                <li key={product.id}>{product.name}</li>
               ))}
             </ul>
           </div>
