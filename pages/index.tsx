@@ -33,7 +33,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>
+        <h1 data-testid="welcome-header">
           Welcome to <a href="#">Kantin Fasilkom</a>
         </h1>
 
