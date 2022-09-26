@@ -1,17 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../lib/prisma";
+
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const merchants = await prisma.merchant.findMany({
-    include: {
-      products: true,
-    },
-  });
+  const merchants = []
 
   return res.json(merchants);
 }
