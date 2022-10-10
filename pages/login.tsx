@@ -22,19 +22,6 @@ export default function Register() {
             password: password
         }).then(() => { alert('success') })
 
-        // await fetch('http://127.0.0.1:8000/registers/', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Access-Control-Allow-Origin': 'http://127.0.0.1:8000/'
-        //     },
-        //     body: JSON.stringify({
-        //         name,
-        //         email,
-        //         password,
-        //     })
-        // });
-
         await router.push('/');
 
     }
