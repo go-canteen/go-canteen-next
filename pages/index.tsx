@@ -1,4 +1,7 @@
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { DUMMY_CANTEEN } from "./canteen/[id]";
 
 export default function Home() {
   return (
@@ -9,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="p-4">
         <h1 data-testid="welcome-header text-xl">
           <a href="#">Welcome to Gocanteen</a>
         </h1>
@@ -22,16 +25,37 @@ export default function Home() {
                 Visit your canteen or cafeteria who already partnered with
                 GoCanteen
               </li>
-              <li>
-                Scan the QR Code on the table or on the menu to order your food
-              </li>
+              <li>Scan the QR Code on the table or find your canteen below</li>
               <li>
                 Pay, then wait for your food to be served and enjoy your meal
               </li>
             </ol>
           </p>
         </div>
+
+        <div className="mt-8">
+          <h2>Available Canteen</h2>
+          <div className="flex flex-col gap-4 mt-4">
+            <CanteenCard {...DUMMY_CANTEEN} />
+          </div>
+        </div>
       </main>
     </div>
   );
 }
+
+export const CanteenCard = ({ image, name, address, id }) => {
+  return (
+    <Link href={`/canteen/${id}`}>
+      <a className="flex items-center gap-4">
+        <div className="w-16 h-16 relative">
+          <Image src={image} alt={name} layout="fill" objectFit="cover" />
+        </div>
+        <div>
+          <h3>{name}</h3>
+          <p>{address}</p>
+        </div>
+      </a>
+    </Link>
+  );
+};
