@@ -15,7 +15,7 @@ import { NavItem } from "./nav-item";
 export const Layout = ({ children }) => {
   return (
     <div className="max-w-screen-sm mx-auto bg-white">
-      <div className="container min-h-screen pb-16 p-4">{children}</div>
+      <div className="container min-h-screen pb-16">{children}</div>
       <div className="w-full max-w-screen-sm flex bg-green-300 h-16 justify-between py-4 px-8 fixed bottom-0">
         {NAV_ITEMS.map((item, i) => (
           <NavItem key={i} {...item} />
