@@ -9,7 +9,7 @@ const CanteenDetailPage = () => {
 
       <main className="">
         <h1 data-testid="welcome-header">
-          Welcome to <a href="#">Kantin Fasilkom</a>
+           <a href="#">Kantin Fasilkom</a>
         </h1>
 
         <h2>List Merchant</h2>
