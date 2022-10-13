@@ -5,10 +5,11 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
-  collectCoverageFrom: [
-    "components/**/*.{js,jsx,ts,tsx}",
-    "pages/**/*.{js,jsx,ts,tsx}",
-    "lib/**/*.{js,jsx,ts,tsx}",
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "/tests/",
+    "next.config.js",
+    "jest.config.ts",
   ],
 };
 module.exports = createJestConfig(customJestConfig);
