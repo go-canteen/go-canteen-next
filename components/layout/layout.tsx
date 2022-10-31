@@ -16,7 +16,7 @@ import { NavItem } from "./nav-item";
 
 export const Layout = ({ children }) => {
   return (
-    <div className="max-w-xl mx-auto bg-white">
+    <div className="max-w-xl mx-auto bg-white shadow">
       <div className="container min-h-screen pb-16">{children}</div>
       <div className="w-full max-w-xl flex bg-white border-t-2 h-16 justify-between py-4 px-8 fixed bottom-0">
         {NAV_ITEMS.map((item, i) => (
