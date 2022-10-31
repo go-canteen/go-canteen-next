@@ -1,13 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import Carousel from "react-elastic-carousel";
-import styled from "styled-components";
 
 const CanteenDetailPage = () => {
-  const carouselRef = useRef(null);
-
   return (
     <>
       <Head>
@@ -29,25 +24,6 @@ const CanteenDetailPage = () => {
       </div>
 
       <main className="container mx-auto p-4">
-        <CarouselWrapper>
-          <Carousel
-            itemsToScroll={1}
-            ref={carouselRef}
-            showArrows={false}
-            enableAutoPlay
-          >
-            {DUMMY_MERCHANTS.map((merchant, i) => (
-              <div key={i} className="w-full relative h-32">
-                <Image
-                  src={merchant.image}
-                  alt={merchant.name}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            ))}
-          </Carousel>
-        </CarouselWrapper>
         <div className="mt-6">
           <h2>Daftar Merchant</h2>
           <div className="flex flex-col gap-4 mt-4">
@@ -84,33 +60,6 @@ export const MerchantCard = ({ merchant }) => {
     </div>
   );
 };
-
-const CarouselWrapper = styled.div`
-  .rec-carousel-wrapper {
-    position: relative;
-  }
-
-  .rec-slider-container {
-    margin: 0;
-    border-radius: 4px;
-  }
-
-  .rec-pagination {
-    position: absolute;
-    bottom: 0.5rem;
-  }
-
-  .rec-dot {
-    background-color: white;
-    opacity: 50%;
-    box-shadow: none;
-  }
-
-  .rec-dot_active {
-    background-color: white;
-    box-shadow: none;
-  }
-`;
 
 const DUMMY_MERCHANTS = [
   {
