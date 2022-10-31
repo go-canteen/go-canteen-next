@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { OrderContainer } from "../components/container/order";
 
 export default function OrderPage() {
   return (
@@ -9,11 +10,7 @@ export default function OrderPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 data-testid="welcome-header text-xl">
-           <a href="#">Your Order</a>
-        </h1>
-      </main>
+      <OrderContainer />
     </div>
   );
 }
