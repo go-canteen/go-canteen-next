@@ -22,9 +22,9 @@ describe("Layout", () => {
 
   it("should render the navigation menu", () => {
     const rendered = render(<Layout />);
-    expect(rendered.queryByText("Home")).toBeTruthy();
-    expect(rendered.queryByText("Order")).toBeTruthy();
-    expect(rendered.queryByText("History")).toBeTruthy();
-    expect(rendered.queryByText("Account")).toBeTruthy();
+    expect(rendered.queryByText("Toko")).toBeTruthy();
+    expect(rendered.queryByText("Pesanan")).toBeTruthy();
+    expect(rendered.queryByText("Riwayat")).toBeTruthy();
+    expect(rendered.queryByText("Akun")).toBeTruthy();
   });
 });
