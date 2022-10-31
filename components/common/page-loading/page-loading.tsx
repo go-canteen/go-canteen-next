@@ -2,7 +2,7 @@ import { Spinner } from "@chakra-ui/react";
 
 export const PageLoadingComponent = () => {
   return (
-    <div className="h-[70vh] w-screen flex justify-center items-center">
+    <div className="h-[70vh] w-full flex justify-center items-center">
       <Spinner
         thickness="4px"
         speed="0.65s"
