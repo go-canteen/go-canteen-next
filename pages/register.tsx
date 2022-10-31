@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Register() {
     return (
         <div>
@@ -27,7 +29,7 @@ export function Form() {
                 <button type="submit">DAFTAR</button>
             </form>
             <div>
-                Sudah punya akun? <a href="/login">Masuk disini</a>
+                Sudah punya akun? <Link href="/login"><a>Masuk disini</a></Link> 
             </div>
         </div>
     );
