@@ -12,8 +12,6 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        // TODO: uncomment and modify lines below when the backend api is ready, we are using dummy user for now
-
         const data = await axios
           .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/login/`, {
             email: credentials?.email,
