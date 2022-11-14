@@ -1,36 +1,133 @@
+import type { NextPage } from "next";
+import Head from "next/head";
+import { FormControl, FormLabel, Input, Button } from "@chakra-ui/react";
+import { Field, Form, Formik, FormikValues } from "formik";
+import { useState } from "react";
 import Link from "next/link";
 
-export default function Register() {
-    return (
-        <div>
-            <a href="./">Kembali</a>
-            <h1>Daftar ke Canteen</h1>
-            <Form />
-        </div>
-    );
-}
+const Register: NextPage = () => {
+  const [loading, setLoading] = useState(false);
 
-export function Form() {
-    return (
-        <div>
-            <form action="#" method="POST">
-                <label htmlFor="name">Masukkan nama Customer/Merchant</label>
-                <select name="role" id="role" data-testid="role">
-                    <option value="customer">Customer</option>
-                    <option value="merchant">Merchant</option>
-                </select>
-                <input name="name" id="name" type="text" placeholder="Nama Customer/Merchant" required /><br />
-                <label htmlFor="email">Masukkan e-mail kamu</label>
-                <input name="email" id="email" type="text" placeholder="Alamat e-mail" required /><br />
-                <label htmlFor="password1">Masukkan kata sandi kamu</label>
-                <input name="password1" id="password1" type="password" placeholder="Kata sandi" required /><br />
-                <label htmlFor="password2">Ulangi kata sandi kamu sekali lagi</label>
-                <input name="password2" id="password2" type="password" placeholder="Kata sandi" required /><br />
-                <button type="submit">DAFTAR</button>
-            </form>
-            <div>
-                Sudah punya akun? <Link href="/login"><a>Masuk disini</a></Link> 
-            </div>
+  const onSubmit = async (data: FormikValues) => {
+    // TODO: Integrate with backend API
+    setLoading(true);
+    console.log(data);
+    setLoading(false);
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <Head>
+        <title>Buat Akun Pembeli</title>
+        <meta name="description" content="Buat akun pembeli" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="max-w-xl mx-auto flex h-full justify-center items-center mt-8">
+        <div className="flex flex-col gap-4 w-full">
+          <h1 className="text-2xl font-bold">Buat Akun Pembeli</h1>
+          <Formik
+            initialValues={{
+              email: "",
+              password1: "",
+              password2: "",
+              tnc: false,
+            }}
+            onSubmit={onSubmit}
+          >
+            {({ values, errors, touched }) => (
+              <Form>
+                <Field name="email">
+                  {({ field }: any) => (
+                    <FormControl mt={4}>
+                      <FormLabel>Email</FormLabel>
+                      <Input
+                        {...field}
+                        type="email"
+                        placeholder="Masukkan email"
+                      />
+                    </FormControl>
+                  )}
+                </Field>
+                <Field
+                  name="password1"
+                  validate={(value: string) => {
+                    let error;
+
+                    if (value.search(/[a-z]/i) < 0) {
+                      error = "Password tidak boleh angka semua";
+                    }
+
+                    if (value.length < 8) {
+                      error = "Password kurang dari 8 karakter";
+                    }
+
+                    return error;
+                  }}
+                >
+                  {({ field }: any) => (
+                    <FormControl mt={4}>
+                      <FormLabel>Password</FormLabel>
+                      <Input
+                        {...field}
+                        placeholder="Masukkan password"
+                        type="password"
+                      />
+                    </FormControl>
+                  )}
+                </Field>
+                <Field
+                  name="password2"
+                  validate={(value: string) => {
+                    let error;
+
+                    if (value !== values.password1) {
+                      error = "Password tidak sama";
+                    }
+
+                    return error;
+                  }}
+                >
+                  {({ field }: any) => (
+                    <FormControl mt={4}>
+                      <FormLabel>Ulangi Password</FormLabel>
+                      <Input
+                        {...field}
+                        placeholder="Ulangi password"
+                        type="password"
+                      />
+                    </FormControl>
+                  )}
+                </Field>
+
+                <Button
+                  mt={4}
+                  colorScheme="yellow"
+                  width="100%"
+                  isLoading={loading}
+                  type="submit"
+                  disabled={
+                    values.email === "" ||
+                    values.password1 === "" ||
+                    values.password2 === "" ||
+                    !values.tnc
+                  }
+                >
+                  Buat Akun Pembeli
+                </Button>
+                <div className="mt-4">
+                  Sudah punya akun?{" "}
+                  <Link href="/login">
+                    <a className="text-blue-500">Login</a>
+                  </Link>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
+
+export default Register;
